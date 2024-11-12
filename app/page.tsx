@@ -1,15 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 
+
 interface CoinData {
   rates: {
     [key: string]: number;
   };
 }
-
 export default function CoinMarket() {
   const API_KEY = "a9da3d4ae5af956aee06b06016bcdc98";
-  const [data, setData] = useState<CoinData | null>(null);
+  const [data, setData] = useState<CoinData|null>(null);
 
   useEffect(() => {
     fetch(`http://api.coinlayer.com/live?access_key=${API_KEY}`)
@@ -19,9 +19,8 @@ export default function CoinMarket() {
         setData(jsonConverted);
       });
   }, []);
-
   return (
-    <div>
+    <div >
       <div className="h-full bg-gray-100">
         <div className=" w-5xl sm:mx-auto bg-white shadow-lg rounded-lg p-8">
           <header className="text-center mb-8">
@@ -44,30 +43,95 @@ export default function CoinMarket() {
           <div className=" border-gray-200">
             <table className=" w-full table-fixed text-left text-gray-700">
               <thead className="bg-blue-100">
-                <tr>
+                <tr className="">
                   <th className="w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2 pl-6 sm:px-6">#</th>
-                  <th className="w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2 pl-5 sm:px-6">Name</th>
-                  <th className="w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2 sm:px-6">Symbol</th>
-                  <th className="w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2 sm:px-6">Price</th>
+                  <th className=" w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2  pl-5 sm:px-6 ">Name</th>
+                  <th className=" w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2  sm:px-6 ">Symbol</th>
+                  <th className=" w-1/4 py-3 sm:py-4 font-semibold text-sm sm:text-lg px-2 sm:px-6 ">Price</th>
                 </tr>
               </thead>
               <tbody>
-                {data ? (
-                  Object.keys(data.rates).map((coin, index) => (
-                    <tr className="hover:bg-blue-50 transition duration-150" key={coin}>
-                      <td className="px-6 py-4 border-b sm:text-lg text-sm">{index + 1}</td>
-                      <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">{coin}</td>
-                      <td className="px-6 py-4 border-b sm:text-lg text-sm">{coin}</td>
-                      <td className="px-6 py-4 border-b sm:text-lg text-sm">{data.rates[coin]}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={4} className="text-center py-4">Loading...</td>
-                  </tr>
-                )}
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b sm:text-lg text-sm"> 01</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Bitcoin</td>
+                  <td className="px-6 py-4 border-b sm:text-lg text-sm">BTC</td>
+                  <td className="px-6 py-4 border-b sm:text-lg text-sm"> {data?.rates?.BTC}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 02</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Ethereum</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">ETH</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.ETH}
+                  </td>
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 03</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Tether 	</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">USDT</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.USDT}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 04</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Solana </td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">SOL</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.SOL}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 05</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Binance </td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">BNB</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.BNB}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 06</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Cardano</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">ADA</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.ADA}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 07</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Ripple </td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">XRP</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.XRP}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 08</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Dogecoin </td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">DOGE</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.DOGE}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 09</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Tether</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">USDT</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.USDT}
+                  </td>
+
+                </tr>
+                <tr className="hover:bg-blue-50 transition duration-150">
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> 10</td>
+                  <td className="px-6 py-4 border-b font-medium text-sm sm:text-lg">Litecoin  </td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg">LTC</td>
+                  <td className="px-6 py-4 border-b text-sm sm:text-lg"> {data?.rates?.LTC}
+                  </td>
+                </tr>
               </tbody>
             </table>
+            <br />
           </div>
         </div>
       </div>
