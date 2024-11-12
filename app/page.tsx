@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 export default function CoinMarket() {
-  const API_KEY = "";
+  const API_KEY = "a9da3d4ae5af956aee06b06016bcdc98";
   const [data, setData] = useState<any>(null);
 
   useEffect(() => {
